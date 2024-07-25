@@ -1,0 +1,6 @@
+### What about the service and controller?
+
+We don't need these to implement a GraphQL API.
+If you still want to have a REST API available,
+you can add those files to the application as well,
+and the same endpoints as before will be available.
