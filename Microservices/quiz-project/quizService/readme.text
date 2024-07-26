@@ -1,0 +1,48 @@
+We are using openfeign for microservices communication in this project.
+To add the openfeign into the project, follow the below instructions:
+
+- Go to spring initializr & search for openfeign.
+- we cant directly add the openfeign dependecy into the project.
+since openfeign is spring cloud dependency & to use spring cloud dependencies,
+we need to update some extra things like dependencyManagement,
+
+To update all the things:
+- explore its pom.xml & scroll to <dependencyManagement> tag,
+copy it and paste it in your project pom.xml under </dependencies> tag
+
+<dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+- this dependencyManagement is using spring-cloud-version property.
+so we need to add that too in our pom.xml.
+go to <properties> tag and copy the spring-cloud-version property from spring initializr
+and paste it into the pom.xml <property> tag.
+
+<spring-cloud.version>2023.0.3</spring-cloud.version>
+
+
+- now copy the openfeign dependency and paste it in your pom.xml
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+
+
+- reload the project. it should be added.
+
+
+--------------------------------------
+- now add the interface in your quizMicroservice project &
+add an interface for calling the QuestionService in the service layer of quizMicroservice as - QuestionClient.java
+- add the Question.java entity in our QuizMicroservice entity folder. copy-paste same code
+-
